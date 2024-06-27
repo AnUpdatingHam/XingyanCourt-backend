@@ -22,10 +22,13 @@ public class UserDTO implements Serializable {
     //邮箱
     @Schema(name = "邮箱", type = "String")
     private String email;
-    //简介
-    @Schema(name = "简介", type = "String")
-    private String introduction;
     //状态
     @Schema(name = "状态", type = "Integer")
     private Integer status;
+    //金币数
+    @Schema(name = "金币数", type = "Integer")
+    private String coins;
+    //钻石数
+    @Schema(name = "钻石数", type = "Integer")
+    private String diamonds;
 }

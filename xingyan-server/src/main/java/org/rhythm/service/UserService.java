@@ -20,6 +20,4 @@ public interface UserService {
     User getById(Long id);
 
     void update(UserDTO userDTO);
-
-    UserExtension getExtensionById(Long id);
 }

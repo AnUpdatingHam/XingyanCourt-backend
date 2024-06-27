@@ -1,5 +1,6 @@
 package org.rhythm.entity;
 
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,10 +25,11 @@ public class User implements Serializable {
     //邮箱
     private String email;
     //状态
-
-    //简介
-    private String introduction;
     private Integer status;
+    //金币数
+    private Integer coins;
+    //钻石数
+    private Integer diamonds;
     //用户创建时间
     //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;

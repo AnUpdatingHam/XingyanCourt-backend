@@ -14,7 +14,6 @@ import org.rhythm.entity.UserExtension;
 import org.rhythm.exception.AccountLockedException;
 import org.rhythm.exception.AccountNotFoundException;
 import org.rhythm.exception.PasswordErrorException;
-import org.rhythm.mapper.UserExtensionMapper;
 import org.rhythm.mapper.UserMapper;
 import org.rhythm.result.PageResult;
 import org.rhythm.service.UserService;
@@ -30,8 +29,6 @@ import java.time.LocalDateTime;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
-    @Autowired
-    UserExtensionMapper userExtensionMapper;
     
     @Override
     public PageResult pageQuery(UserPageQueryDTO userPageQueryDTO) {
@@ -104,11 +101,5 @@ public class UserServiceImpl implements UserService {
         user.setUpdateTime(LocalDateTime.now());
         BeanUtils.copyProperties(userDTO, user);
         userMapper.update(user);
-    }
-
-    @Override
-    public UserExtension getExtensionById(Long id) {
-        UserExtension userExtension = userExtensionMapper.getById(id);
-        return userExtension;
     }
 }

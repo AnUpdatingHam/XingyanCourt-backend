@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.rhythm.mapper.TestPaperMapper">
+    <update id="update">
+        update test_paper
+        <set>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="subject != null and subject != ''">subject = #{subject},</if>
+            <if test="grade != null and grade != '">grade = #{grade},</if>
+            <if test="type != null and type != ''">type = #{type},</if>
+            <if test="pageCount != null">page_count = #{pageCount},</if>
+            <if test="questionCount != null">question_count = #{questionCount},</if>
+            <if test="path != null and path != ''">path = #{path},</if>
+            <if test="containAnswer != null">contain_answer = #{containAnswer},</if>
+            <if test="createTime != null">create_time = #{createTime}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="pageQuery" resultType="org.rhythm.entity.TestPaper">
+        SELECT * FROM test_paper
+        <where>
+            <if test="userId != null and userId != -1">
+                AND user_id = #{userId}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                AND (name LIKE CONCAT('%', #{keyword}, '%') OR subject LIKE CONCAT('%', #{keyword}, '%') OR grade LIKE CONCAT('%', #{keyword}, '%'))
+            </if>
+            <if test="subject != null and subject != ''">
+                AND (subject LIKE CONCAT('%', #{subject}, '%')
+            </if>
+        </where>
+        ORDER BY
+        create_time DESC
+    </select>
+</mapper>

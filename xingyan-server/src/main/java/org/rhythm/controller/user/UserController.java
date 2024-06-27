@@ -136,20 +136,6 @@ public class UserController {
     }
 
     /**
-     * 根据id查询用户
-     * @param id
-     * @return
-     */
-    @Operation(summary = "根据id查询用户拓展信息")
-    @GetMapping("/extension/{id}")
-    public Result<UserExtension> getExtensionById(@PathVariable Long id){
-        log.info("根据id查询用户拓展信息:{}",id);
-        UserExtension userExtension = userService.getExtensionById(id);
-        System.out.println(userExtension);
-        return Result.success(userExtension);
-    }
-
-    /**
      * 根据id修改用户
      * @param UserDTO
      * @return
@@ -161,5 +147,4 @@ public class UserController {
         userService.update(UserDTO);
         return Result.success();
     }
-
 }

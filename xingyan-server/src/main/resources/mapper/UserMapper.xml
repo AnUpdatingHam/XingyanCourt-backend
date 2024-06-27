@@ -9,13 +9,15 @@
             <if test="password != null and password != ''">password = #{password},</if>
             <if test="phone != null and phone != ''">phone = #{phone},</if>
             <if test="email != null and email != ''">email = #{email},</if>
-            <if test="introduction != null and introduction != ''">introduction = #{introduction},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="coins != null">coins = #{coins},</if>
+            <if test="diamonds != null">diamonds = #{diamonds},</if>
             <if test="createTime != null">create_time = #{createTime},</if>
-            <if test="updateTime != null">update_time = #{updateTime},</if>
-            <if test="status != null">status = #{status}</if>
+            <if test="updateTime != null">update_time = #{updateTime}</if>
         </set>
         where id = #{id}
     </update>
+
     <select id="pageQuery" resultType="org.rhythm.entity.User">
         select * from user
         <where>
