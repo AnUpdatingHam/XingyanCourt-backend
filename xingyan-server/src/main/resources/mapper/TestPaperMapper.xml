@@ -28,7 +28,7 @@
             <if test="keyword != null and keyword != ''">
                 AND (name LIKE CONCAT('%', #{keyword}, '%') OR subject LIKE CONCAT('%', #{keyword}, '%') OR grade LIKE CONCAT('%', #{keyword}, '%'))
             </if>
-            <if test="subject != null and subject != ''">
+            <if test="subject != null and subject != '' and subject != '全部'">
                 AND (subject LIKE CONCAT('%', #{subject}, '%')
             </if>
         </where>
