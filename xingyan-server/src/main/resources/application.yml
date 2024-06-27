@@ -1,0 +1,121 @@
+server:
+  port: 8080
+  #ssl:
+    #key-store: www.codemelon.top.p12
+    # key-store: classpath:www.codemelon.top.p12
+    #key-store-password: sweetMelon
+    #keyStoreType: PKCS12
+    # keyAlias: tomcat
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  #禁用索引功能，尝试解决swagger问题
+#  index:
+#    ignore: true
+#    目前暂时不使用druid连接池，因为会报错 Failed to determine a suitable driver class
+#    druid:
+  wenxin:
+    apiKey: ${rhythm.wenxin.apiKey}
+    secretKey: ${rhythm.wenxin.secretKey}
+
+  datasource:
+      driver-class-name: ${rhythm.datasource.driver-class-name}
+      url: jdbc:mysql://${rhythm.datasource.host}:${rhythm.datasource.port}/${rhythm.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${rhythm.datasource.username}
+      password: ${rhythm.datasource.password}
+
+  #data:
+  redis:
+    host: ${rhythm.redis.host}
+    port: ${rhythm.redis.port}
+    password: ${rhythm.redis.password}
+    database: ${rhythm.redis.database}
+    # 读超时
+    timeout: ${rhythm.redis.timeout}
+    # 连接超时
+    connectTimeout: ${rhythm.redis.connectTimeout}
+
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.qicai.entity
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    org:
+      rhythm:
+        mapper: debug
+        service: info
+        controller: info
+
+rhythm:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: wtmelon
+    # 设置jwt过期时间
+    admin-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    # 设置jwt签名加密时使用的秘钥
+    user-secret-key: wtmelon
+    # 设置jwt过期时间
+    user-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    user-token-name: token # authentication
+
+# springdoc-openapi项目配置
+springdoc:
+  api-docs:
+    #是否开启文档功能
+    enabled: true
+    #swagger后端请求地址
+    path: /api-docs
+  swagger-ui:
+    #自定义swagger前端请求路径，输入http：127.0.0.1:8080/test会自动重定向到swagger页面
+    path: /test
+  #包扫描路径
+  packages-to-scan: org.rhythm.controller,org.rhythm.dto
+  #这里定义了两个分组，可定义多个，也可以不定义
+  group-configs:
+    #分组名
+    - group: admin
+      #按路径匹配
+      pathsToMatch: /admin/**
+      #分组名
+    - group: user
+      #按包路径匹配
+      packagesToScan: com.hello.api.user
+
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  enable: true
+  setting:
+    language: zh-CN
+
+#  alioss:
+#    endpoint:${genius.alioss.endpoint}
+#    access-key-id:${genius.alioss.access-key-id}
+#    access-key-secret:${genius.alioss.access-key-secret}
+#    bucket-name:${genius.alioss.bucket-name}
+#  wechat:
+#    appid: ${genius.wechat.appid}
+#    secret: ${genius.wechat.secret}
+#  shop:
+#    address: ${genius.shop.address}
+#  baidu:
+#    ak: ${genius.baidu.ak}
+
+#knife4j:
+#  enable: true
+#  setting:
+#    language: zh_cn

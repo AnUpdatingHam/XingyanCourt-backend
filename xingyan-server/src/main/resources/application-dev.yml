@@ -1,0 +1,41 @@
+rhythm:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    #host: 192.168.88.130
+    port: 3306
+    database: code_melon
+    username: root
+    password: 123456
+
+  wenxin:
+    apiKey: 4M7s6tJ4tZ1TnDY2o13NoSYt
+    secretKey: ExC7ckoUvw2fGZN6y3VroomZXpMsJ6fd
+
+#    host: localhost
+#    port: 3306
+#    database: genius
+#    username: root
+#    password: 123456
+
+  alioss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com
+    access-key-id: NULL
+    access-key-secret: NULL
+    bucket-name: NULL
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 0
+    # 读超时
+    timeout: 3000
+    # 连接超时
+    connectTimeout: 5000
+  wechat:
+    appid: NULL
+    secret: NULL
+  shop:
+    address: 厦门市翔安区翔安南路东园北里115号楼
+  baidu:
+    ak: ZQ0bTfR64oniFAGg9yfUp2NokLLC7LKv
