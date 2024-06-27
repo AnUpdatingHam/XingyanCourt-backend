@@ -1,0 +1,26 @@
+<<<<<<< HEAD
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+=======
+# 默认忽略的文件
+/shelf/
+/workspace.xml
+# 基于编辑器的 HTTP 客户端请求
+>>>>>>> 7857cb7c26eed2c7f508d44ec5887263e4d9cead
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+<<<<<<< HEAD
+misc.xml
+modules.xml
+vcs.xml
+jarRepositories.xml
+codeCanvas.iml
+compiler.xml
+=======
+# GitHub Copilot persisted chat sessions
+/copilot/chatSessions
+>>>>>>> 7857cb7c26eed2c7f508d44ec5887263e4d9cead
