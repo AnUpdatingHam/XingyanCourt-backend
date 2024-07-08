@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 public class TestPaper implements Serializable {
     //ID
     private Long id;
+    //名字
+    private String name;
     //用户ID
     private Long userId;
     //科目

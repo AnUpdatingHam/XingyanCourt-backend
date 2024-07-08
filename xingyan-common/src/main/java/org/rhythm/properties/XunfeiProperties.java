@@ -5,12 +5,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties(prefix = "rhythm.wenxin")
+@ConfigurationProperties(prefix = "rhythm.xunfei")
 @Data
-public class WenXinProperties {
-    /**
-     * 文心一言相关配置
-     */
+public class XunfeiProperties {
+    private String hostUrl;
+    private String appid;
+    private String apiSecret;
     private String apiKey;
-    private String secretKey;
 }

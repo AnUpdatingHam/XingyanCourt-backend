@@ -9,12 +9,12 @@ import java.io.Serializable;
 @Data
 @Tag(name = "文章查询界面DTO", description = "查询文章界面传递的数据模型")
 public class TestPaperPageQueryDTO implements Serializable {
-    //文章标题
-    @Schema(title = "关键字", type = "String")
-    private String keyword;
     //用户ID
     @Schema(name = "用户ID", type = "Long")
     private Long userId;
+    //文章标题
+    @Schema(title = "关键字", type = "String")
+    private String keyword;
     //文章分类ID
     @Schema(name = "科目", type = "String")
     private String subject;

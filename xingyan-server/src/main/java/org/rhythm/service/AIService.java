@@ -1,12 +1,9 @@
 package org.rhythm.service;
 
-import org.rhythm.entity.Question;
-import org.rhythm.vo.QuestionVO;
-
-import java.io.IOException;
+import org.rhythm.dto.TestPaperCreateDTO;
+import org.rhythm.entity.TestPaper;
+import org.rhythm.vo.PDFCreateVO;
 
 public interface AIService {
-    QuestionVO answer(Question question);
-
-    String getAccessToken() throws IOException;
+    PDFCreateVO createPDF(TestPaperCreateDTO testPaperCreateDTO);
 }

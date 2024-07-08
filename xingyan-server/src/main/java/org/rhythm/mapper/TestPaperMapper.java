@@ -3,11 +3,14 @@ package org.rhythm.mapper;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.rhythm.annotation.AutoFill;
 import org.rhythm.dto.TestPaperPageQueryDTO;
 import org.rhythm.entity.TestPaper;
 import org.rhythm.enumeration.OperationType;
+
+import java.util.List;
 
 @Mapper
 public interface TestPaperMapper {
@@ -16,10 +19,10 @@ public interface TestPaperMapper {
      * @param testPaper
      */
     @AutoFill(value = OperationType.INSERT)
-    @Insert("insert into test_paper (user_id, subject, grade, type, page_count," +
+    @Insert("insert into test_paper (user_id, name, subject, grade, type, page_count," +
             " question_count, contain_answer, path, create_time) " +
             "VALUES " +
-            "(#{userId},#{subject},#{grade},#{type},#{pageCount},#{questionCount}," +
+            "(#{userId},#{name},#{subject},#{grade},#{type},#{pageCount},#{questionCount}," +
             "#{containAnswer},#{path},#{createTime})")
     void insert(TestPaper testPaper);
 
@@ -44,4 +47,10 @@ public interface TestPaperMapper {
      */
     @Select("select * from test_paper where id = #{id}")
     TestPaper getById(Long id);
+
+    /**
+     * 批量删除pdf
+     * @param ids
+     */
+    void deleteByIds(@Param("ids") List<Long> ids);
 }

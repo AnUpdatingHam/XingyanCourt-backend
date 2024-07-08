@@ -3,20 +3,16 @@ package org.rhythm.controller.user;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
-import org.rhythm.dto.TestPaperDTO;
+import org.rhythm.dto.TestPaperCreateDTO;
 import org.rhythm.dto.TestPaperPageQueryDTO;
-import org.rhythm.entity.ArticleCatalogue;
-import org.rhythm.entity.ArticleCategory;
-import org.rhythm.entity.ArticleExtension;
 import org.rhythm.entity.TestPaper;
 import org.rhythm.result.PageResult;
 import org.rhythm.result.Result;
+import org.rhythm.service.AIService;
 import org.rhythm.service.TestPaperService;
-import org.rhythm.vo.ArticleExtensionVO;
-import org.rhythm.vo.ArticleVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 //试卷接口
@@ -28,19 +24,8 @@ import java.util.List;
 public class TestPaperController {
     @Autowired
     private TestPaperService testPaperService;
-
-    /**
-     *新增试卷
-     * @param testPaper
-     * @return
-     */
-    @Operation(summary = "新增试卷")
-    @PostMapping
-    public Result add(@RequestBody TestPaper testPaper){
-        log.info("新增试卷: {}", testPaper);
-        testPaperService.add(testPaper);
-        return Result.success();
-    }
+    @Autowired
+    private AIService aiService;
 
     /**
      * 分页查询试卷
@@ -80,4 +65,31 @@ public class TestPaperController {
         testPaperService.update(testPaper);
         return Result.success();
     }
+
+    /**
+     * pdf批量删除
+     * @param ids
+     * @return
+     */
+    @DeleteMapping
+    @Operation(summary = "pdf批量删除")
+    public Result delete(@RequestParam List<Long> ids){
+        log.info("pdf批量删除: {}",ids);
+        testPaperService.deleteBatch(ids);
+        return Result.success();
+    }
+
+
+    /**
+     *
+     * @param filename
+     * @return
+     */
+    @GetMapping("/download/{filename}")
+    @Operation(summary = "pdf下载")
+    public Result<Resource> downloadFile(@PathVariable String filename){
+        log.info("pdf下载:{}", filename);
+        return testPaperService.downloadPDF(filename);
+    }
+
 }

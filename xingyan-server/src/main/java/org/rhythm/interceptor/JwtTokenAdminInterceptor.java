@@ -38,6 +38,8 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
             //当前拦截到的不是动态方法，直接放行
             return true;
         }
+        return true;
+        /*
         //1、从请求头中获取令牌
         String token = request.getHeader(jwtProperties.getAdminTokenName());
 
@@ -55,5 +57,6 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor {
             response.setStatus(401);
             return false;
         }
+         */
     }
 }

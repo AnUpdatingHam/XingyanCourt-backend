@@ -4,13 +4,15 @@ rhythm:
     host: localhost
     #host: 192.168.88.130
     port: 3306
-    database: code_melon
+    database: xingyan_court
     username: root
     password: 123456
 
-  wenxin:
-    apiKey: 4M7s6tJ4tZ1TnDY2o13NoSYt
-    secretKey: ExC7ckoUvw2fGZN6y3VroomZXpMsJ6fd
+  xunfei:
+    hostUrl: https://spark-api.xf-yun.com/v3.5/chat
+    appid: 790c61ea
+    apiSecret: NDRhZDM0ZmMwZjUyMjAyYTQxODQ0MGEw
+    apiKey: eade3e8daf473142395d6b6c084aeecd
 
 #    host: localhost
 #    port: 3306

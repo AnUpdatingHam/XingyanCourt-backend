@@ -35,6 +35,8 @@ public class UserServiceImpl implements UserService {
         //开始分页查询
         PageHelper.startPage(userPageQueryDTO.getPage(), userPageQueryDTO.getPageSize());
         Page<User> page = userMapper.pageQuery(userPageQueryDTO);
+        for (User user : page.getResult())
+            user.setPassword("******");
         return new PageResult(page.getTotal(),page.getResult());
     }
 

@@ -19,6 +19,13 @@
         where id = #{id}
     </update>
 
+    <delete id="deleteByIds">
+        delete from test_paper where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
     <select id="pageQuery" resultType="org.rhythm.entity.TestPaper">
         SELECT * FROM test_paper
         <where>
@@ -29,7 +36,7 @@
                 AND (name LIKE CONCAT('%', #{keyword}, '%') OR subject LIKE CONCAT('%', #{keyword}, '%') OR grade LIKE CONCAT('%', #{keyword}, '%'))
             </if>
             <if test="subject != null and subject != '' and subject != '全部'">
-                AND (subject LIKE CONCAT('%', #{subject}, '%')
+                AND subject LIKE CONCAT('%', #{subject}, '%')
             </if>
         </where>
         ORDER BY
