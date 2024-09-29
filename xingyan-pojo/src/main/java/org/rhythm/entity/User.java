@@ -36,6 +36,8 @@ public class User implements Serializable {
     //用户信息更新时间
     //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
+    //用户头像
+    private String imageUrl;
 
     //private Integer status;
 }

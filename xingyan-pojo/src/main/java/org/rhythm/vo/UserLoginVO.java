@@ -26,6 +26,9 @@ public class UserLoginVO implements Serializable {
     @Schema(name = "Jwt令牌", type = "String")
     private String token;
 
+    @Schema(name = "用户头像", type = "String")
+    private String imageUrl;
+
     @Schema(name = "用户创建时间", type = "LocalDateTime")
     private LocalDateTime createTime;
 

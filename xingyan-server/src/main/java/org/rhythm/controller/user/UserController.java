@@ -63,7 +63,9 @@ public class UserController {
                 .token(token)
                 .createTime(user.getCreateTime())
                 .updateTime(user.getUpdateTime())
+                .imageUrl(user.getImageUrl())
                 .build();
+        log.info("userVO: {}", userLoginVO);
 
         return Result.success(userLoginVO);
     }

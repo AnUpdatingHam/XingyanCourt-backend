@@ -14,6 +14,7 @@
             <if test="diamonds != null">diamonds = #{diamonds},</if>
             <if test="createTime != null">create_time = #{createTime},</if>
             <if test="updateTime != null">update_time = #{updateTime}</if>
+            <if test="imageUrl != null">image_url = #{imageUrl}</if>
         </set>
         where id = #{id}
     </update>

@@ -21,9 +21,9 @@ public interface UserMapper {
     User getByUsername(String username);
 
     @AutoFill(value = OperationType.INSERT)
-    @Insert("insert into user (username, password, phone, email, status, coins, diamonds, create_time, update_time, status) " +
+    @Insert("insert into user (username, password, phone, email, status, coins, diamonds, create_time, update_time, status, image_url) " +
             "VALUES " +
-            "(#{username},#{password},#{phone},#{email},#{status},#{coins},#{diamonds},#{createTime},#{updateTime},#{status})")
+            "(#{username},#{password},#{phone},#{email},#{status},#{coins},#{diamonds},#{createTime},#{updateTime},#{status},#{imageUrl})")
     void insert(User user);
 
     /**
